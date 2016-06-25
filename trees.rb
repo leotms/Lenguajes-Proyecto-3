@@ -10,7 +10,7 @@ require "mod_bfs"
 
 #Implementación de la Clase Árbol Binario.
 class ArbolBinario
-	#include mod_bfs
+	include BFS
 
 	attr_accessor :valor  #Valor almacenado en el nodo.
 	attr_reader   :hizq   #Referenca al hijo izquierdo.
@@ -36,7 +36,7 @@ class ArbolBinario
 
 end
 
-
+#Implementación de la Clase Árbol Rosa.
 class ArbolRosa
 
   include BFS
