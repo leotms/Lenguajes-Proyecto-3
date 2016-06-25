@@ -26,7 +26,6 @@ class ArbolBinario
 
 
 	def each
-		yield self
 		yield self.hizq if self.hizq != nil
 		yield self.hder if self.hder != nil
 	end
@@ -56,9 +55,11 @@ end
 
 
 ## PRUEBA ARBOLES BINARIOS
-arbolB1 = ArbolBinario.new(10,ArbolBinario.new(11),ArbolBinario.new(13))
+arbolB1 = ArbolBinario.new(10,ArbolBinario.new(11,ArbolBinario.new(15)),ArbolBinario.new(13))
 
+puts arbolB1.valor
 arbolB1.each {|arbol| puts arbol.valor}
+arbolB1.hizq.each {|arbol| puts arbol.valor}
 
 ## PRUEBA ARBOLES ROSA
 arbolh1 = ArbolRosa.new("Hijo")
