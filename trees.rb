@@ -7,6 +7,36 @@
 $LOAD_PATH << '.'
 require "mod_bfs"
 
+
+#Implementación de la Clase Árbol Binario.
+class ArbolBinario
+	#include mod_bfs
+
+	attr_accessor :valor  #Valor almacenado en el nodo.
+	attr_reader   :hizq   #Referenca al hijo izquierdo.
+	attr_reader   :hder   #Referencia al hijo derecho.
+
+	#Inicialización de un árbol binario.
+	# valor: valor del nodo.
+	# hizq : hijo izquierdo.
+	# hder : hijo derecho.
+	def initialize(valor,hizq=nil,hder=nil)
+		@valor = valor
+		@hizq  = hizq
+		@hder  = hder
+
+	end
+
+
+	def each
+		yield self
+		yield self.hizq if self.hizq != nil
+		yield self.hder if self.hder != nil
+	end
+
+end
+
+
 class ArbolRosa
 
   include BFS
@@ -33,6 +63,11 @@ class ArbolRosa
 
 end
 
+
+## PRUEBA ARBOLES BINARIOS
+arbolB1 = ArbolBinario.new(10,ArbolBinario.new(11),ArbolBinario.new(13))
+
+arbolB1.each {|arbol| puts arbol.valor}
 
 ## PRUEBA ARBOLES ROSA
 arbolh1 = ArbolRosa.new("Hijo")
