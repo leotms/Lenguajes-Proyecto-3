@@ -27,13 +27,14 @@ class ArbolBinario
 
 	end
 
-
+	#Metodo que itera sobre los nodos hijos y aplica un bloque sobre ellos.
 	def each
 		yield self.hizq if self.hizq != nil
 		yield self.hder if self.hder != nil
 	end
 
 end
+
 
 #Implementación de la Clase Árbol Rosa.
 class ArbolRosa
@@ -65,10 +66,9 @@ end
 
 ## PRUEBA ARBOLES BINARIOS
 arbolB1 = ArbolBinario.new(10,ArbolBinario.new(11,ArbolBinario.new(15)),ArbolBinario.new(13))
+arbolB2 = ArbolBinario.new(20)
 
-puts arbolB1.valor
-arbolB1.each {|arbol| puts arbol.valor}
-arbolB1.hizq.each {|arbol| puts arbol.valor}
+arbolB1.bfs {|arbol| puts arbol.valor}
 
 ## PRUEBA ARBOLES ROSA
 arbolh1 = ArbolRosa.new("Hijo")
@@ -80,5 +80,6 @@ arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
 arbolR2 = ArbolRosa.new("arbolR2")
 arbolR2.each #{ |arbol| puts arbol.val}
 
-#arbolR1.bfs {|arbol| puts arbol.val}
-arbolR1.printself
+arbolR1.bfs {|arbol| puts arbol.val}
+#arbolR1.printself
+#arbolR2.printself
