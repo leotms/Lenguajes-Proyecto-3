@@ -15,4 +15,15 @@ module BFS
     end
   end
 
+  def recoger(&bloque)
+
+    nodos_correctos = []
+    self.dfs do |nodo|
+      if bloque.call(nodo) do
+        nodos_correctos.push(nodo)
+      end
+    end
+
+    return nodos_correctos
+
 end
