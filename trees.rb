@@ -3,8 +3,13 @@
 # Autores:
 #     - Aldrix Marfil     #10-10940
 #     - Leonardo Martinez #11-10576
+#!/usr/bin/ruby
+$LOAD_PATH << '.'
+require "mod_bfs"
 
 class ArbolRosa
+
+  include BFS
 
   attr_accessor   :val
   attr_reader     :hijos
@@ -22,6 +27,10 @@ class ArbolRosa
     end
   end
 
+  def printself
+    puts self.val
+  end
+
 end
 
 
@@ -29,8 +38,11 @@ end
 arbolh1 = ArbolRosa.new("Hijo")
 arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
 
-puts arbolR1.val
-arbolR1.each { |arbol| puts arbol.val}
+# puts arbolR1.val
+# arbolR1.each { |arbol| puts arbol.val}
 
 arbolR2 = ArbolRosa.new("arbolR2")
-arbolR2.each { |arbol| puts arbol.val}
+arbolR2.each #{ |arbol| puts arbol.val}
+
+#arbolR1.bfs {|arbol| puts arbol.val}
+arbolR1.printself
