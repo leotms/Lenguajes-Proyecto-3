@@ -30,7 +30,7 @@ module BFS
     #end
 
 
-    def bfs(nodos_recorridos=[],nodos_faltantes=[])
+    def bfs()
         nodos_recorridos = []
         nodos_recorridos.push(self)
 
