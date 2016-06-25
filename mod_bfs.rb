@@ -6,14 +6,16 @@
 
 module BFS
 
-  def bfs &bloque
-    bloque.(self.val)
-    nodos_recorridos = []
-    self.each do |nodo|
-      nodos_recorridos.push(nodo)
-      bloque.(nodo)
+    def bfs 
+        yield self
+        nodos_recorridos = []
+        self.each do |nodo|
+            nodos_recorridos.push(nodo)
+        end
+        for nodo in nodos_recorridos
+            yield nodo
+        end
     end
-  end
 
   def recoger(&bloque)
 
