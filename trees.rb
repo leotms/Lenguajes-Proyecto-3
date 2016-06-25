@@ -75,7 +75,7 @@ arbolh1 = ArbolRosa.new("Hijo")
 arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
 
 # puts arbolR1.val
-arbolR1.each # { |arbol| puts arbol.val}
+#arbolR1.each # { |arbol| puts arbol.val}
 
 arbolR2 = ArbolRosa.new("arbolR2")
 arbolR2.each #{ |arbol| puts arbol.val}
