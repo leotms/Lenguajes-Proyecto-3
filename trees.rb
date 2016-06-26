@@ -3,6 +3,7 @@
 # Autores:
 #     - Aldrix Marfil     #10-10940
 #     - Leonardo Martinez #11-10576
+
 #!/usr/bin/ruby
 $LOAD_PATH << '.'
 require "mod_bfs"

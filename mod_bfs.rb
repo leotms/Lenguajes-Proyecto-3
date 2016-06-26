@@ -6,6 +6,7 @@
 
 module BFS
 
+
     def bfs
         nodos_recorridos = []
         nodos_recorridos.push(self)
@@ -28,7 +29,6 @@ module BFS
                 nodos_correctos.push(nodo)
             end
         end
-
         return nodos_correctos
     end
 
