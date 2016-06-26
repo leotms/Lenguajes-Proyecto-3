@@ -65,26 +65,13 @@ end
 
 
 ## PRUEBA ARBOLES BINARIOS
-arbolB1 = ArbolBinario.new(10,ArbolBinario.new(11,ArbolBinario.new(15)),ArbolBinario.new(13,nil,ArbolBinario.new(17)))
+arbolB1 = ArbolBinario.new(17,ArbolBinario.new(15,ArbolBinario.new(11)),ArbolBinario.new(13,nil,ArbolBinario.new(10)))
 arbolB2 = ArbolBinario.new(20)
 arbolB3 = ArbolBinario.new(25,nil,ArbolBinario.new(30))
-
-puts "BFS para arbol binario 1"
-arbolB1.bfs {|arbol| puts arbol.valor}
-
-puts "BFS para arbol binario 2"
-arbolB2.bfs {|arbol| puts arbol.valor}
-
-puts "BFS para arbol binario 3"
-arbolB3.bfs {|arbol| puts arbol.valor}
+arbolB4 = ArbolBinario.new(1,ArbolBinario.new(2,ArbolBinario.new(4),ArbolBinario.new(5)),ArbolBinario.new(3,ArbolBinario.new(6),ArbolBinario.new(7)))
 
 ## PRUEBA ARBOLES ROSA
 arbolh1 = ArbolRosa.new("Hijo")
 arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
-arbolR2 = ArbolRosa.new("arbolR2")
-
-puts "BFS para arbol rosa 1"
-arbolR1.bfs {|arbol| puts arbol.val}
-
-puts "BFS para arbol rosa 2"
-arbolR2.bfs {|arbol| puts arbol.val}
+arbolR2 = ArbolRosa.new("ArbolR2")
+arbolR3 = ArbolRosa.new("ArbolR3",[ArbolRosa.new("Hijo1",[ArbolRosa.new("Hijo5"),ArbolRosa.new("Hijo4")]),ArbolRosa.new("Hijo2"),ArbolRosa.new("Hijo3")])
