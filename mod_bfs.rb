@@ -6,7 +6,7 @@
 
 module BFS
 
-
+    #Método que permite recorrer árboles (binarios y rosas) aplicando BFS. 
     def bfs
         nodos_recorridos = []
         nodos_recorridos.push(self)
@@ -20,7 +20,9 @@ module BFS
         end
     end
 
-
+    #Metodo que permite recorrer árboles (binarios y rosas) aplicando BFS
+    #y devolviendo los nodos que cumplen con el predicado del bloque pasado
+    #de manera explicita.
     def recoger(&bloque)
         nodos_correctos = []
 

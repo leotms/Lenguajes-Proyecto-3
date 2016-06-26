@@ -7,12 +7,14 @@
 #!/usr/bin/ruby
 $LOAD_PATH << '.'
 require "mod_bfs"
+require "mod_fold"
 require "nodos"
 
 
 #Implementación de la Clase Árbol Binario.
 class ArbolBinario
 	include BFS
+	include FOLD
 
 	attr_accessor :valor  #Valor almacenado en el nodo.
 	attr_reader   :hizq   #Referenca al hijo izquierdo.
@@ -66,7 +68,7 @@ end
 
 
 ## PRUEBA ARBOLES BINARIOS
-arbolB1 = ArbolBinario.new(171,ArbolBinario.new(15,ArbolBinario.new(11)),ArbolBinario.new(13,nil,ArbolBinario.new(10)))
+arbolB1 = ArbolBinario.new(17,ArbolBinario.new(15,ArbolBinario.new(11)),ArbolBinario.new(13,nil,ArbolBinario.new(10)))
 arbolB2 = ArbolBinario.new(20)
 arbolB3 = ArbolBinario.new(25,nil,ArbolBinario.new(30))
 arbolB4 = ArbolBinario.new(1,ArbolBinario.new(2,ArbolBinario.new(4),ArbolBinario.new(5)),ArbolBinario.new(3,ArbolBinario.new(6),ArbolBinario.new(7)))
@@ -76,6 +78,8 @@ s = Singular.new
 o = Oscuro.new
 
 arbolB1.bfs {|arbol| arbol.valor=arbol.valor.mutar(u); puts arbol.valor}
+
+arbolB1.fold(1) {|arbol,acum| puts arbol.valor - acum}
 
 ## PRUEBA ARBOLES ROSA
 arbolh1 = ArbolRosa.new("Hijo")
