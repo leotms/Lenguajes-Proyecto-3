@@ -20,7 +20,7 @@ class Fixnum
 		dividendo, resto = divmod(10)
 		dividendo == 0 ? [resto] : [*dividendo.digitos,resto]
 	end
-  
+
 end
 
 
@@ -53,7 +53,7 @@ class Singular < Mutador
 
 	#Con una instancia de Fixnum muta en la multiplicacion del último dígito
 	#con la suma de los dígitos restantes.
-	def recibe_Fixnum(o)
+	def Singular.recibe_Fixnum(o)
 		lista_digitos = o.digitos
 		n = lista_digitos.length - 1
 
@@ -71,7 +71,7 @@ class Singular < Mutador
 
 	#Con una instancia de String muta en los caracteres pertenecientes a
 	#"singular" en mayúscula.
-	def recibe_String(o)
+	def Singular.recibe_String(o)
 		n = o.length
 		for i in 0..n-1
 			if "singular".include?(o[i])
@@ -84,7 +84,7 @@ class Singular < Mutador
 
 	#Con una instancia de Array muta en todos los elementos interpolados en un
 	#string separados por un espacio.
-	def recibe_Array(o)
+	def Singular.recibe_Array(o)
 		o.flatten!
 		n = o.length
 		x = ""
@@ -103,7 +103,7 @@ end
 class Uniforme < Mutador
 
 	#Con una instancia de Fixnum muta en el promedio de los dígitos.
-	def recibe_Fixnum(o)
+	def Uniforme.recibe_Fixnum(o)
 		lista_digitos = o.digitos
 		n = lista_digitos.length
 
@@ -121,7 +121,7 @@ class Uniforme < Mutador
 
 	#Con una instancia de String muta en un nuevo string con los caracteres
 	#en mayúscula y minúscula intercalados.
-	def recibe_String(o)
+	def Uniforme.recibe_String(o)
 		n = o.length
 		for i in 0..n-1
 			if i % 2 == 0
@@ -136,7 +136,7 @@ class Uniforme < Mutador
 
 	#Con una instancia de Array mutaria los elemnetos del arreglo de manera
 	#uniforme.
-	def recibe_Array(o)
+	def Uniforme.recibe_Array(o)
 		n = o.length
 		for i in 0..n-1
 			u = Uniforme.new
@@ -152,7 +152,7 @@ class Oscuro < Mutador
 
 	#Con una instancia de Fixnum muta en un Fixnum sin los digitos en
 	#posición impar.
-	def recibe_Fixnum(o)
+	def Oscuro.recibe_Fixnum(o)
 		lista_digitos = o.digitos
 		n = lista_digitos.length
 
@@ -174,7 +174,7 @@ class Oscuro < Mutador
 
 	#Con una instancia de String muta en los caracteres en posición impar
 	#concatenados del lado izquierdo y los otros concatenados del lado derecho.
-	def recibe_String(o)
+	def Oscuro.recibe_String(o)
 		n = o.length
 		impares = ""
 		pares   = ""
@@ -191,7 +191,7 @@ class Oscuro < Mutador
 
 	#Con una instancia de Array selecciona el 50% de los elementos del arreglo
 	#de manera aleatoria y los muta de manera oscura.
-	def recibe_Array(o)
+	def Oscuro.recibe_Array(o)
 		n = o.length
 		mitad = n/2
 		elementos = []
