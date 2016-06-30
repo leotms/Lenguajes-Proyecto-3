@@ -7,22 +7,26 @@
 
 class Fixnum
 
-	#Método que recibe una objeto (instancia) de una clase y retorna 
+	#Método que recibe una objeto (instancia) de una clase y retorna
 	#otro objeto de clase Fixnum
+
 	def mutar(v)
 		v.recibe_Fixnum(self)
 	end
 
+  #Toma el numero self y retorna una lista cuyos elementos son
+  #los digitos de self individualmente.
 	def digitos
 		dividendo, resto = divmod(10)
 		dividendo == 0 ? [resto] : [*dividendo.digitos,resto]
 	end
+  
 end
 
 
 class String
 
-	#Método que recibe una objeto (instancia) de una clase y retorna 
+	#Método que recibe una objeto (instancia) de una clase y retorna
 	#otro objeto de clase String
 	def mutar(v)
 		v.recibe_String(self)
@@ -32,7 +36,7 @@ end
 
 class Array
 
-	#Método que recibe una objeto (instancia) de una clase y retorna 
+	#Método que recibe una objeto (instancia) de una clase y retorna
 	#otro objeto de clase Array
 	def mutar(v)
 		v.recibe_Array(self)
@@ -50,7 +54,7 @@ class Singular < Mutador
 	#Con una instancia de Fixnum muta en la multiplicacion del último dígito
 	#con la suma de los dígitos restantes.
 	def recibe_Fixnum(o)
-		lista_digitos = o.round.digitos
+		lista_digitos = o.digitos
 		n = lista_digitos.length - 1
 
 		if n + 1 == 1
@@ -65,7 +69,7 @@ class Singular < Mutador
 	end
 
 
-	#Con una instancia de String muta en los caracteres pertenecientes a 
+	#Con una instancia de String muta en los caracteres pertenecientes a
 	#"singular" en mayúscula.
 	def recibe_String(o)
 		n = o.length
@@ -88,7 +92,7 @@ class Singular < Mutador
 			x += o[i].to_s
 			if i != n-1
 				x += " "
-			end 
+			end
 		end
 		return x
 	end
@@ -100,27 +104,27 @@ class Uniforme < Mutador
 
 	#Con una instancia de Fixnum muta en el promedio de los dígitos.
 	def recibe_Fixnum(o)
-		lista_digitos = o.round.digitos
+		lista_digitos = o.digitos
 		n = lista_digitos.length
 
-		if n == 1 
+		if n == 1
 			return o
 		else
 			suma = 0
 			for i in 0..n-1
 				suma += lista_digitos[i]
 			end
-			return (suma.to_f/2)
+			return (suma.to_f/n).round
 		end
 	end
 
 
-	#Con una instancia de String muta en un nuevo string con los caracteres 
+	#Con una instancia de String muta en un nuevo string con los caracteres
 	#en mayúscula y minúscula intercalados.
 	def recibe_String(o)
 		n = o.length
 		for i in 0..n-1
-			if i % 2 == 0 
+			if i % 2 == 0
 				o[i] = o[i].upcase
 			else
 				o[i] = o[i].downcase
@@ -130,7 +134,7 @@ class Uniforme < Mutador
 	end
 
 
-	#Con una instancia de Array mutaria los elemnetos del arreglo de manera 
+	#Con una instancia de Array mutaria los elemnetos del arreglo de manera
 	#uniforme.
 	def recibe_Array(o)
 		n = o.length
@@ -146,10 +150,10 @@ end
 #Mutador que recibe una clase Fixnum, String o Array y altera a la misma.
 class Oscuro < Mutador
 
-	#Con una instancia de Fixnum muta en un Fixnum sin los digitos en 
+	#Con una instancia de Fixnum muta en un Fixnum sin los digitos en
 	#posición impar.
 	def recibe_Fixnum(o)
-		lista_digitos = o.round.digitos
+		lista_digitos = o.digitos
 		n = lista_digitos.length
 
 		if n == 1
@@ -162,13 +166,13 @@ class Oscuro < Mutador
 				nuevo_num += lista_digitos[i]*(10**(cant_pares-1))
 				i += 2
 				cant_pares -= 1
-			end		
+			end
 			return nuevo_num
 		end
 	end
 
 
-	#Con una instancia de String muta en los caracteres en posición impar 
+	#Con una instancia de String muta en los caracteres en posición impar
 	#concatenados del lado izquierdo y los otros concatenados del lado derecho.
 	def recibe_String(o)
 		n = o.length
@@ -200,12 +204,12 @@ class Oscuro < Mutador
 			i = elementos.length
 		end
 		for i in elementos
-			puts "Se selecciono " + o[i].to_s
 			osc  = Oscuro.new
 			o[i] = o[i].mutar(osc)
 		end
 		return o
 	end
+
 end
 
 

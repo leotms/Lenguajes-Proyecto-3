@@ -37,6 +37,11 @@ class ArbolBinario
 		yield self.hder if self.hder != nil
 	end
 
+	#Muta el valor del nodo y lo reasigna al mismo nodo.
+	def mutar(m)
+		@valor = @valor.mutar(m)
+	end
+
 end
 
 
@@ -44,14 +49,14 @@ end
 class ArbolRosa
   	include BFS
 
-  	attr_accessor :val    #Valor almacenado en el nodo.
+  	attr_accessor :valor    #Valor almacenado en el nodo.
   	attr_reader   :hijos  #Arreglo de referencias a los hijos.
 
   	#Inicialización de un árbol rosa.
-  	# val  : valor del nodo.
+  	# valor  : valor del nodo.
   	# hijos: arreglo de arboles rosa.
-  	def initialize(val, hijos=[nil])
-    	@val   = val
+  	def initialize(valor, hijos=[nil])
+    	@valor   = valor
     	@hijos = hijos
   	end
 
@@ -64,10 +69,14 @@ class ArbolRosa
     	end
   	end
 
+		#Muta el valor del nodo y lo reasigna al mismo nodo.
+		def mutar(m)
+			@valor = @valor.mutar(m)
+		end
 end
 
 
-## PRUEBA ARBOLES BINARIOS
+#PRUEBA ARBOLES BINARIOS
 arbolB1 = ArbolBinario.new(17,ArbolBinario.new(15,ArbolBinario.new(11)),ArbolBinario.new(13,nil,ArbolBinario.new(10)))
 arbolB2 = ArbolBinario.new(20)
 arbolB3 = ArbolBinario.new(25,nil,ArbolBinario.new(30))
@@ -77,14 +86,23 @@ u = Uniforme.new
 s = Singular.new
 o = Oscuro.new
 
-arbolB1.bfs {|arbol| arbol.valor=arbol.valor.mutar(u); puts arbol.valor}
+puts "BFS"
+#arbolB1.bfs {|arbol| arbol.valor=arbol.valor.mutar(u); puts arbol.valor}
+arbolB1.bfs {|arbol| puts arbol.valor}
 
-arbolB1.fold(1) {|arbol,acum| puts arbol.valor - acum}
+puts "DFS"
+arbolB1.dfs {|arbol| puts arbol.valor}
 
-## PRUEBA ARBOLES ROSA
-arbolh1 = ArbolRosa.new("Hijo")
-arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
-arbolR2 = ArbolRosa.new("ArbolR2")
-arbolR3 = ArbolRosa.new("ArbolR3",[ArbolRosa.new("Hijo1",[ArbolRosa.new("Hijo5"),ArbolRosa.new("Hijo4")]),ArbolRosa.new("Hijo2"),ArbolRosa.new("Hijo3")])
-
-arbolR1.bfs {|arbol| arbol.val=arbol.val.mutar(u); puts arbol.val}
+puts "FOLD1"
+sol = arbolB1.fold(0) {|arbol,acum| arbol.valor + acum}
+puts sol
+puts "FOLD2"
+#arbolB1.fold2(1) {|arbol,acum| arbol.valor - acum}
+#
+# ## PRUEBA ARBOLES ROSA
+# arbolh1 = ArbolRosa.new("Hijo")
+# arbolR1 = ArbolRosa.new("ArbolR1",[arbolh1,arbolh1,arbolh1])
+# arbolR2 = ArbolRosa.new("ArbolR2")
+# arbolR3 = ArbolRosa.new("ArbolR3",[ArbolRosa.new("Hijo1",[ArbolRosa.new("Hijo5"),ArbolRosa.new("Hijo4")]),ArbolRosa.new("Hijo2"),ArbolRosa.new("Hijo3")])
+#
+# arbolR1.bfs {|arbol| arbol.valor=arbol.valor.mutar(u); puts arbol.valor}
