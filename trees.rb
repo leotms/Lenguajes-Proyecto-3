@@ -49,7 +49,7 @@ end
 class ArbolRosa
   	include BFS
 
-  	attr_accessor :valor    #Valor almacenado en el nodo.
+  	attr_accessor :valor  #Valor almacenado en el nodo.
   	attr_reader   :hijos  #Arreglo de referencias a los hijos.
 
   	#Inicialización de un árbol rosa.

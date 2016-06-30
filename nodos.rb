@@ -5,11 +5,12 @@
 #     - Leonardo Martinez #11-10576
 
 
+# Extension de las clases Fixnum, String y Array a discreción de las necesidades
+# del proyecto.
 class Fixnum
 
-	#Método que recibe una objeto (instancia) de una clase y retorna
-	#otro objeto de clase Fixnum
-
+	#Método que recibe una clase Mutador y retorna
+	#un objeto de clase Fixnum
 	def mutar(v)
 		v.recibe_Fixnum(self)
 	end
@@ -26,8 +27,8 @@ end
 
 class String
 
-	#Método que recibe una objeto (instancia) de una clase y retorna
-	#otro objeto de clase String
+	#Método que recibe una clase Mutador y retorna
+	#un objeto de clase String
 	def mutar(v)
 		v.recibe_String(self)
 	end
@@ -36,8 +37,8 @@ end
 
 class Array
 
-	#Método que recibe una objeto (instancia) de una clase y retorna
-	#otro objeto de clase Array
+	#Método que recibe una clase Mutador y retorna
+	#un objeto de clase Array
 	def mutar(v)
 		v.recibe_Array(self)
 	end
@@ -45,7 +46,7 @@ end
 
 
 
-#Clase abstracta mutador.
+#Clase abstracta Mutador.
 class Mutador; end
 
 #Mutador que recibe una clase Fixnum, String o Array y altera a la misma.
@@ -211,7 +212,3 @@ class Oscuro < Mutador
 	end
 
 end
-
-
-#c = Oscuro.new
-#puts ["Me",35,["Hola",25,12,456],1,4].mutar(c)

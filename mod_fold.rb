@@ -20,13 +20,10 @@ module FOLD
 	# base: valor base para aplicar la operacion y luego funciona como
 	#       acumulador.
 	def fold(base)
-
 		self.dfs do |nodo|
 			base = yield nodo, base
 		end
-
 		return base
-
 	end
 
 end
